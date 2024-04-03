@@ -43,7 +43,7 @@ class FunctionManager(SnowparkObjectManager):
             secrets,
             runtime,
         )
-        return self.execute_query(query)
+        return self._execute_query(query)
 
 
 class ProcedureManager(SnowparkObjectManager):
@@ -81,4 +81,4 @@ class ProcedureManager(SnowparkObjectManager):
             runtime,
             execute_as_caller,
         )
-        return self.execute_query(query)
+        return self._execute_query(query)

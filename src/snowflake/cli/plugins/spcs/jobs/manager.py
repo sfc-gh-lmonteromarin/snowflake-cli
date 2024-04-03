@@ -31,9 +31,9 @@ class JobManager(SqlExecutionMixin):
         return json.dumps(data)
 
     def status(self, job_name: str) -> SnowflakeCursor:
-        return self.execute_query(f"CALL SYSTEM$GET_JOB_STATUS('{job_name}')")
+        return self._execute_query(f"CALL SYSTEM$GET_JOB_STATUS('{job_name}')")
 
     def logs(self, job_name: str, container_name: str):
-        return self.execute_query(
+        return self._execute_query(
             f"call SYSTEM$GET_JOB_LOGS('{job_name}', '{container_name}')"
         )

@@ -7,15 +7,11 @@ from typing import List, Optional
 import jinja2
 from snowflake.cli.api.console import cli_console as cc  # TODO: Modify this
 from snowflake.cli.api.exceptions import SnowflakeSQLExecutionError
-from snowflake.cli.api.project.schemas.native_app.native_app import NativeApp
 from snowflake.cli.api.project.util import (
     unquote_identifier,
 )
 from snowflake.cli.api.sql_execution import SqlExecutionMixin
 from snowflake.cli.plugins.connection.util import make_snowsight_url
-from snowflake.cli.plugins.nativeapp.artifacts import (
-    build_bundle,
-)
 from snowflake.cli.plugins.nativeapp.constants import (
     ALLOWED_SPECIAL_COMMENTS,
     COMMENT_COL,
@@ -173,15 +169,6 @@ def verify_project_distribution(  # TODO: Review all (external) usages
         )
         return False
     return True
-
-
-def build_bundle2(  # TODO: Deal with this name
-    native_app: NativeApp, project_root: str
-) -> None:  # TODO: Review all (external) usages
-    """
-    Populates the local deploy root from artifact sources.
-    """
-    build_bundle(project_root, native_app.deploy_root, native_app.artifacts)
 
 
 def sync_deploy_root_with_stage(  # TODO: Review all (external) usages

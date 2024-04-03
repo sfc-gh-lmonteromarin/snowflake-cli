@@ -124,7 +124,7 @@ class SnowparkObjectManager(SqlExecutionMixin):
         raise NotImplementedError()
 
     def execute(self, execution_identifier: str) -> SnowflakeCursor:
-        return self._execute_query(f"{self._object_execute} {execution_identifier}")
+        return self.execute_query(f"{self._object_execute} {execution_identifier}")
 
     @staticmethod
     def artifact_stage_path(identifier: str):
